@@ -5,7 +5,6 @@ import { SignupComponent } from './modules/user/components/signup/signup.compone
 import { HomeComponent } from './modules/home/components/home/home.component';
 
 const routes: Routes = [
-   { path: '**', redirectTo: '', },
    { path: '', component:  HomeComponent},
    { path: 'login', component: LoginComponent },
    { path: 'signup', component: SignupComponent}
