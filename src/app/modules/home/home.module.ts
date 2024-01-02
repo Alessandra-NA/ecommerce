@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
-
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -9,7 +9,8 @@ import { HomeComponent } from './components/home/home.component';
     HomeComponent
   ],
   imports: [
-    CommonModule
+     CommonModule,
+     ButtonModule
    ],
   exports: [
     HomeComponent
