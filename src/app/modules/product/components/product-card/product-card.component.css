@@ -1,0 +1,17 @@
+.add-to-cart{
+   position: relative;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+      top: -1px;
+}
+
+
+.add-to-cart-button:hover svg{
+   stroke: white;
+}
+
+.add-to-cart{
+   stroke: #1A1A1A;
+}
