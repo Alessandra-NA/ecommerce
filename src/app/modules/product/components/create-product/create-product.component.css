@@ -1,0 +1,48 @@
+input:focus{
+   outline: none;
+}
+
+.secondary-button{
+   background: rgba(86, 172, 89, 0.15);
+}
+
+.secondary-button:hover {
+   background: rgba(44, 116, 47, 0.20);
+}
+
+figure {
+   position: relative;
+}
+
+figure img {
+   display: block;
+}
+
+figcaption {
+   background: rgba(0, 0, 0, 0.5);
+   color: #FFF;
+   padding: 10px;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 128px;
+   display: none;
+}
+
+figure:hover figcaption {
+   display: block;
+}
+
+button:disabled,
+button[disabled] {
+   border: 1px solid #c5c5c5;
+   background-color: #e5e5e5;
+   color: #666666;
+}
+
+
+.required:after {
+   content: " *";
+   color: red;
+}
