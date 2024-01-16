@@ -3,8 +3,11 @@ import { CommonModule } from '@angular/common';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { ProductQuickViewComponent } from './components/product-quick-view/product-quick-view.component';
+
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,11 +16,14 @@ import { ProductDetailsComponent } from './components/product-details/product-de
       ProductCardComponent,
       ProductListComponent,
       CreateProductComponent,
-      ProductDetailsComponent
+      ProductDetailsComponent,
+      ProductQuickViewComponent
    ],
   imports: [
      CommonModule,
-     ReactiveFormsModule
+     ReactiveFormsModule,
+     FormsModule,
+      RouterModule
    ],
   exports: [
      ProductListComponent

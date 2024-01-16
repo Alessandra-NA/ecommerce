@@ -8,10 +8,10 @@
 }
 
 
-.add-to-cart-button:hover svg{
+.view-product-button:hover svg{
    stroke: white;
 }
 
-.add-to-cart{
+.view-product{
    stroke: #1A1A1A;
 }

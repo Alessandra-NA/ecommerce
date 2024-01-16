@@ -16,4 +16,19 @@ export class ProductService {
       }
       return this.http.post<Product>(url, data);
    }
+
+   getProduct(id: number) {
+      const url = this.apiUrl + '/product/get/' + id;
+      return this.http.get<Product>(url);
+   }
+
+   getRelatedProducts(category: string) {
+      const url = this.apiUrl + '/product/category/' + category;
+      return this.http.get<Product[]>(url);
+   }
+
+   getFeatured() {
+      const url = this.apiUrl + '/product/featured';
+      return this.http.get<Product[]>(url);
+   }
 }

@@ -1,1 +1,7 @@
-<p>product-details works!</p>
+<div class="w-4/5 mx-auto">
+   <app-product-quick-view [product]="product"></app-product-quick-view>
+   <div *ngIf="relatedProducts.length>0" class="my-10">
+      <h2 class="text-3xl font-semibold mx-auto w-fit">Related Products</h2>
+      <app-product-list [products]="relatedProducts"></app-product-list>
+   </div>
+</div>

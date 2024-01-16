@@ -8,13 +8,12 @@ import { CartModule } from './modules/cart/cart.module';
 import { ProductModule } from './modules/product/product.module';
 import { HomeModule } from './modules/home/home.module';
 import { SharedModule } from './shared/shared.module';
-import { ProductDetailsComponent } from './product/components/product-details/product-details.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
    declarations: [
       AppComponent,
-      ProductDetailsComponent,
    ],
    imports: [
       BrowserModule,
@@ -24,7 +23,8 @@ import { ProductDetailsComponent } from './product/components/product-details/pr
       ProductModule,
       HomeModule,
       SharedModule,
-      HttpClientModule
+      HttpClientModule,
+      FormsModule,
    ],
    providers: [],
    bootstrap: [AppComponent]

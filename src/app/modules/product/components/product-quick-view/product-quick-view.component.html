@@ -1,0 +1,94 @@
+<div class="flex items-center gap-8">
+   <!--IMAGES-->
+   <div class="carousel-container w-1/2 h-full">
+      <ul class="carousel my-carousel carousel--thumb h-96 inset-0 p-10">
+         <ng-container *ngFor="let image of product.images; let i = index" class="">
+            <input class="carousel__activator" type="radio" id="{{ 'radio-' + i }}" name="thumb" [checked]="i === 0" />
+            <li class="carousel__slide" >
+               <img [src]="getBackgroundStyle(i)" alt="" srcset="" class="object-contain h-full w-full">
+            </li>
+            <div class="carousel__controls">
+               <label class="carousel__control carousel__control--backward"
+                  for="{{ 'radio-' + ((i - 1 + product.images.length) % product.images.length) }}"></label>
+               <label class="carousel__control carousel__control--forward"
+                  for="{{ 'radio-' + ((i + 1) % product.images.length) }}"></label>
+            </div>
+         </ng-container>
+         <div class="carousel__indicators">
+            <label class="carousel__indicator" for="{{ 'radio-' + i }}" *ngFor="let image of product.images; let i = index"
+               >
+               <img [src]="getBackgroundStyle(i)" alt="" srcset="" class="object-contain h-full w-full rounded-full">
+            </label>
+         </div>
+      </ul>
+   </div>
+   
+   <!--INFO-->
+   <div class="w-1/2 pl-3 flex flex-col gap-2">
+      <!-- Name & stock label -->
+      <div class="title flex items-center h-fit justify-between w-full">
+         <h3 class="text-3xl font-semibold">{{product.name}}</h3>
+         <p *ngIf="product.numberInStock > 0" class="inStock text-dark-green px-2 h-fit">In Stock</p>
+         <p *ngIf="product.numberInStock <= 0" class="outOfStock text-bright-red px-2 h-fit">Out of Stock</p>
+      </div>
+      <!-- Rating -->
+      <div class="flex h-fit justify-between w-full">
+         <div class="stars flex items-center mt-1">
+            <div *ngFor="let i of getRange(product.rating)">
+               <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 22 20">
+                  <path
+                     d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+               </svg>
+            </div>
+            <div *ngFor="let i of getRange(5-product.rating)">
+               <svg class="w-4 h-4 text-gray-300 me-1 dark:text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor" viewBox="0 0 22 20">
+                  <path
+                     d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+               </svg>
+            </div>
+         </div>
+         <p class="text-sm"><b>SKU: </b>{{product.SKU}}</p>
+      </div>
+      <!-- Price and discount -->
+      <div class="price flex gap-2 items-center">
+         <p class="text-xl price" [ngClass]="product.discountPrice == 0 ? 'price' : 'oldPrice'">{{product.price | currency}}</p>
+         <p *ngIf="product.discountPrice!=0" class="text-xl price">{{product.discountPrice| currency}}</p>
+         <p *ngIf="product.discountPrice != 0" class="outOfStock text-md text-bright-red px-3 h-fit !rounded-3xl">{{(product.price - product.discountPrice)/product.price | percent}} Off</p>
+      </div>
+      <div class="divider"></div>
+      <!-- Brand -->
+      <div class="brand">
+         <p class="text-sm text-light-gray"><b>Brand: </b>{{product.brand}}</p>
+      </div>
+      <!-- Description -->
+      <div class="description">
+         <p class="text-sm text-light-gray">{{product.description}}</p>
+      </div>
+      <div class="divider"></div>
+      <!-- Add to cart buttons-->
+      <form class="buttons flex gap-2 w-full justify-around">
+         <!-- Quantity -->         
+         <div class="flex border-gray-200 rounded-full border px-2">
+            <button (click)="handleMinus()" class="h-7 w-7 rounded-full bg-gray-200 m-auto">-</button>
+            <input class="text-center border-none w-10 px-0" type="number" min="1" [max]="product.numberInStock" value="1"
+               [(ngModel)]="addCartQuantity" name="rateInput">
+            <button (click)="handlePlus()" class="h-7 w-7 rounded-full bg-gray-200 m-auto">+</button>
+         </div>
+         <!-- Add to cart -->
+         <button type="submit"
+            class="text-white h-10 bg-light-green hover:bg-dark-green font-medium text-sm w-3/4 rounded-3xl">Add to Cart
+         </button>
+      </form>
+      <!-- Category and tags -->
+      <div class="divider"></div>
+      <p><b>Category: </b>{{product.category}}</p>
+      <p><b>Tags: </b>
+         <span *ngFor="let tag of product.tags" class="inStock mx-1 px-2">{{tag}}</span>
+      </p>
+   </div>
+</div>
+
+
+
