@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Dropdown, DropdownOptions, DropdownInterface, InstanceOptions } from 'flowbite';
 import { ProductService } from '../../services/product.service';
+import { UserService } from '../../../user/services/user.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,6 +16,7 @@ export class CreateProductComponent implements OnInit {
    urlImages: string[] = [];
    tags: string[] = []
    chosenCategory = 'Choose Category';
+   isAdmin: boolean = false;
 
    
 
@@ -30,7 +33,7 @@ export class CreateProductComponent implements OnInit {
       productSKU: new FormControl('', Validators.required),
    });
 
-   constructor(private productService: ProductService) { }
+   constructor(private productService: ProductService, private userService: UserService, private router: Router) { }
    
    addImage() {
       const url = this.productForm.get('productImageUrls')?.value
@@ -95,21 +98,28 @@ export class CreateProductComponent implements OnInit {
    dropdownInstance!: DropdownInterface;
    dropdownVisible = false;
    ngOnInit(): void {
+      this.userService.checkAdmin().subscribe({
+         next: (res) => {
+            const resp = JSON.parse(res.toString())
+            this.isAdmin = resp.isAdmin;
+         },
+         error: (error) => {
+            this.router.navigate(['/']);
+         }
+      })
+
       const $targetEl = document.getElementById('dropdown');
       const $triggerEl = document.getElementById('dropdownDefaultButton');
-
       // Opciones del dropdown
       const options: DropdownOptions = {
          placement: 'bottom',
          triggerType: 'click',
          // ... otras opciones
       };
-
       const instanceOptions: InstanceOptions = {
          id: 'dropdown',
          override: true,
       };
-
       this.dropdownInstance = new Dropdown($targetEl, $triggerEl, options, instanceOptions);
    }
    hideDropdown() {

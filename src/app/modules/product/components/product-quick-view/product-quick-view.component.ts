@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Product } from '../../interfaces/product';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
    selector: 'app-product-quick-view',
@@ -11,7 +12,9 @@ import { ProductService } from '../../services/product.service';
 export class ProductQuickViewComponent implements OnInit {
    @Input() product!: Product;
    productId: number = +this.route.snapshot.paramMap.get('id')!;
-   addCartQuantity: number = 1;
+   addToCartForm = new FormGroup({
+      productQuantity: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(10)]),
+   });
    
    constructor(private route: ActivatedRoute, private productService: ProductService, private cdr: ChangeDetectorRef) {
    }
@@ -34,14 +37,21 @@ export class ProductQuickViewComponent implements OnInit {
    }
 
    handlePlus() {
-      if(this.addCartQuantity < this.product.numberInStock) {
-         this.addCartQuantity++
+      const quantity = this.addToCartForm.get('productQuantity')!.value!
+      if (quantity < this.product.numberInStock) {
+         this.addToCartForm.get('productQuantity')!.setValue(quantity + 1)
       }
    }
    handleMinus() {
-      if(this.addCartQuantity > 1) {
-         this.addCartQuantity--
+      const quantity = this.addToCartForm.get('productQuantity')!.value!
+      if (quantity > 1) {
+         this.addToCartForm.get('productQuantity')!.setValue(this.addToCartForm.get('productQuantity')!.value! - 1)
       }
+   }
+
+   onAddToCart() {
+      const quantity = this.addToCartForm.get('productQuantity')!.value!
+      this.addToCartForm.get('productQuantity')!.setValue(1)
    }
    
 }

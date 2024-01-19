@@ -1,1 +1,25 @@
-<p>signup works!</p>
+<div class="card w-11/12 sm:w-1/2 lg:w-3/5 mx-auto flex flex-col gap-5 shadow-xl p-6 my-10 rounded-md">
+   <h2 class="text-3xl font-semibold mx-auto">Sign up</h2>
+   <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-3">
+      <div>
+         <input type="email" id="email" formControlName="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Email" required>
+      </div>
+      <div>
+         <input type="password" id="password" formControlName="password"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Password" required>
+      </div>
+      <div>
+         <input type="password" id="password_confirmation" formControlName="password_confirmation"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Confirm password" required>
+      </div>
+      <button type="submit" [disabled]="!signupForm.valid"
+         class="text-white h-10 bg-light-green hover:bg-dark-green font-medium rounded-full text-sm px-5 my-2 w-full">Create account</button>
+   </form>
+   <div class="text-sm mx-auto">
+      Already have an account? <a class="font-semibold cursor-pointer" [routerLink]="['/login']">Log in</a>
+   </div>
+</div>

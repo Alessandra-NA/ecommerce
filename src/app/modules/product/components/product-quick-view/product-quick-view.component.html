@@ -68,12 +68,12 @@
       </div>
       <div class="divider"></div>
       <!-- Add to cart buttons-->
-      <form class="buttons flex gap-2 w-full justify-around">
+      <form class="buttons flex gap-2 w-full justify-around" [formGroup]="addToCartForm">
          <!-- Quantity -->         
          <div class="flex border-gray-200 rounded-full border px-2">
             <button (click)="handleMinus()" class="h-7 w-7 rounded-full bg-gray-200 m-auto">-</button>
             <input class="text-center border-none w-10 px-0" type="number" min="1" [max]="product.numberInStock" value="1"
-               [(ngModel)]="addCartQuantity" name="rateInput">
+               formControlName="productQuantity" oninput="validity.valid||(value=1);">
             <button (click)="handlePlus()" class="h-7 w-7 rounded-full bg-gray-200 m-auto">+</button>
          </div>
          <!-- Add to cart -->

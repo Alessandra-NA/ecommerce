@@ -1,1 +1,20 @@
-<p>login works!</p>
+<div class="card w-11/12 sm:w-1/2 lg:w-3/5 mx-auto flex flex-col gap-5 shadow-xl p-6 my-10 rounded-md">
+   <h2 class="text-3xl font-semibold mx-auto">Log In</h2>
+   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-3">
+      <div>
+         <input type="email" id="email" formControlName="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Email" required>
+      </div>
+      <div>
+         <input type="password" id="password" formControlName="password"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Password" required>
+      </div>
+      <button type="submit" [disabled]="!loginForm.valid"
+         class="text-white h-10 bg-light-green hover:bg-dark-green font-medium rounded-full text-sm px-5 my-2 w-full">Log in</button>
+   </form>
+   <div class="text-sm mx-auto">
+      Don't have an account? <a class="font-semibold cursor-pointer" [routerLink]="['/signup']">Register</a>
+   </div>
+</div>

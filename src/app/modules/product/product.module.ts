@@ -6,7 +6,6 @@ import { CreateProductComponent } from './components/create-product/create-produ
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductQuickViewComponent } from './components/product-quick-view/product-quick-view.component';
-
 import { RouterModule } from '@angular/router';
 
 
