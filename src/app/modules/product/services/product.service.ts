@@ -14,7 +14,7 @@ export class ProductService {
       const data = {
          name, price, discountPrice, category, images, numberInStock, active, rating, tags, brand, description, SKU
       }
-      return this.http.post<Product>(url, data);
+      return this.http.post<Product>(url, data, { withCredentials: true });
    }
 
    getProduct(id: number) {

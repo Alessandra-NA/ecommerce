@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
+   loading = false;
    signupForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
@@ -18,6 +19,7 @@ export class SignupComponent {
    constructor(private userService: UserService, private router: Router){}
 
    onSubmit() {
+      this.loading = true;
       if (this.signupForm.get('password')?.value === this.signupForm.get('password_confirmation')?.value) {
          this.userService.signUp(this.signupForm.get('email')?.value!, this.signupForm.get('password')?.value!).subscribe({
             next: (user) => {

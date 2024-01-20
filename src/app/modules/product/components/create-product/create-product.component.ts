@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrl: './create-product.component.css'
 })
 export class CreateProductComponent implements OnInit {
-   
+   loading = false;
    urlImages: string[] = [];
    tags: string[] = []
    chosenCategory = 'Choose Category';
@@ -27,7 +27,7 @@ export class CreateProductComponent implements OnInit {
       productPrice: new FormControl('', Validators.required),
       discountPrice: new FormControl(''),
       productImageUrls: new FormControl(''),
-      productStock: new FormControl('99', Validators.required),
+      productStock: new FormControl(99, Validators.required),
       productStatus: new FormControl('true'),
       productTags: new FormControl(''),
       productSKU: new FormControl('', Validators.required),
@@ -66,11 +66,10 @@ export class CreateProductComponent implements OnInit {
 
    changeCategory(category: string) {
       this.chosenCategory = category
-      var dropdown = document.getElementById("dropdown");
-      this.hideDropdown()
    }
 
    onSubmit() {
+      this.loading = true;
       const name = this.productForm.get('productName')?.value!
       const price = +this.productForm.get('productPrice')?.value!
       const discountPrice = +(this.productForm.get('discountPrice')?.value !== '' ? this.productForm.get('discountPrice')?.value : '0')!
@@ -86,44 +85,34 @@ export class CreateProductComponent implements OnInit {
 
       this.productService.createProduct(name, price, discountPrice, category, images, numberInStock, active, rating, tags, brand, description, SKU).subscribe(
       (res) => {
-         console.log(res)
+         this.router.navigate(['product-details', 1], {state: {product: res}});
       },
       (error) => {
+         this.loading = false;
          console.log(error)
       })
    }
 
-
-   // HANDLING DROPDOWN 
-   dropdownInstance!: DropdownInterface;
-   dropdownVisible = false;
    ngOnInit(): void {
       this.userService.checkAdmin().subscribe({
          next: (res) => {
-            const resp = JSON.parse(res.toString())
-            this.isAdmin = resp.isAdmin;
+            this.isAdmin = res.isAdmin;
          },
          error: (error) => {
             this.router.navigate(['/']);
          }
       })
-
-      const $targetEl = document.getElementById('dropdown');
-      const $triggerEl = document.getElementById('dropdownDefaultButton');
-      // Opciones del dropdown
-      const options: DropdownOptions = {
-         placement: 'bottom',
-         triggerType: 'click',
-         // ... otras opciones
-      };
-      const instanceOptions: InstanceOptions = {
-         id: 'dropdown',
-         override: true,
-      };
-      this.dropdownInstance = new Dropdown($targetEl, $triggerEl, options, instanceOptions);
    }
-   hideDropdown() {
-      // Oculta el dropdown al hacer clic en un elemento de la lista
-      this.dropdownInstance.hide();
+   handlePlus() {
+      const quantity: number = +this.productForm.get('productStock')!.value!;
+      if (quantity < 999) {
+         this.productForm.get('productStock')!.setValue(quantity + 1);
+      }
+   }
+   handleMinus() {
+      const quantity: number = +this.productForm.get('productStock')!.value!;
+      if (quantity > 1) {
+         this.productForm.get('productStock')!.setValue(this.productForm.get('productStock')!.value! - 1)
+      }
    }
 }

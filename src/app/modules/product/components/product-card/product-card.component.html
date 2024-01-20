@@ -1,6 +1,6 @@
 <div *ngIf="cardType === 'vertical'" class="cursor-pointer max-w-sm bg-white border border-gray-200 hover:border-light-green rounded-lg shadow w-48 min-w-48"
    [routerLink]="['/product-details/', product.id]" [state]="{product: product}">
-   <div class="relative left-3 top-3 bg-bright-red w-fit px-2 py-1 text-xs text-white rounded-md font-normal">
+   <div *ngIf="product.discountPrice>0" class="relative left-3 top-3 bg-bright-red w-fit px-2 py-1 text-xs text-white rounded-md font-normal">
       Sale {{(product.price-product.discountPrice)/product.price | percent}}
    </div>
    <div href="#">

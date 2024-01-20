@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductQuickViewComponent } from './components/product-quick-view/product-quick-view.component';
 import { RouterModule } from '@angular/router';
+import { AllProductsComponent } from './components/all-products/all-products.component';
 
 
 
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
       ProductListComponent,
       CreateProductComponent,
       ProductDetailsComponent,
-      ProductQuickViewComponent
+      ProductQuickViewComponent,
+      AllProductsComponent
    ],
   imports: [
      CommonModule,

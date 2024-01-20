@@ -32,7 +32,7 @@ export class UserService {
       this.authenticated.next(auth);
    }
    checkAdmin() {
-      const url = this.apiUrl + '/admin';
-      return this.http.get(url, { withCredentials: true });
+      const url = this.apiUrl + '/checkAdmin';
+      return this.http.get<any>(url, { withCredentials: true });
    }
 }
