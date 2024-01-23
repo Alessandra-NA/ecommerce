@@ -7,6 +7,7 @@ import { FeaturedComponent } from './components/featured/featured.component';
 import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
 import { ProductModule } from '../product/product.module';
 import { TopCategoryComponent } from './components/top-category/top-category.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { TopCategoryComponent } from './components/top-category/top-category.com
   imports: [
      CommonModule,
      ButtonModule,
-     ProductModule
+     ProductModule,
+     RouterModule
    ],
   exports: [
     HomeComponent

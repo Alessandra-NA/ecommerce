@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Dropdown, DropdownOptions, DropdownInterface, InstanceOptions } from 'flowbite';
 import { ProductService } from '../../services/product.service';
 import { UserService } from '../../../user/services/user.service';
 import { Router } from '@angular/router';

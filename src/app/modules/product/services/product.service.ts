@@ -31,4 +31,11 @@ export class ProductService {
       const url = this.apiUrl + '/featured';
       return this.http.get<Product[]>(url);
    }
+
+   getFilteredProducts(category: string, minPrice: number, maxPrice: number, minRating: number, sortingOrder: string) {
+      const url = this.apiUrl + '/filter'
+      const body = { category, minPrice, maxPrice, minRating, sortingOrder }
+      console.log(body)
+      return this.http.post<Product[]>(url, body);
+   }
 }

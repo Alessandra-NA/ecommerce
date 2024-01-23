@@ -16,6 +16,6 @@ export class FeaturedProductsComponent implements OnInit{
    getFeatured() {
       this.productService.getFeatured().subscribe(data => {
          this.featuredProducts = data
-   })
+      })
    }
 }

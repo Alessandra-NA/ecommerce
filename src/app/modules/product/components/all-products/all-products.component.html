@@ -1,1 +1,256 @@
-<p>all-products works!</p>
+<div class="container w-4/5 mx-auto my-5">
+   <div class="flex justify-between mb-5">
+      <!-- search filters -->
+      <div class="filters flex items-center gap-2">
+         <!-- category dropdown-->
+         <label class="dropdown w-fit">
+            <div class="dd-button flex w-fit items-center">
+               Category: {{category}}
+               <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     d="m1 1 4 4 4-4" />
+               </svg>
+            </div>
+      
+            <input type="checkbox" class="dd-input" id="test">
+      
+            <ul class="dd-menu z-30">
+               <li>
+                  <div (click)="setCategory('All')"
+                     class="stars flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                     All
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setCategory('Vegetables')" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">Vegetables
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setCategory('Fruits')" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">Fresh fruit
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setCategory('Fish')" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">Fish</div>
+               </li>
+               <li>
+                  <div (click)="setCategory('Meat')" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">Meat</div>
+               </li>
+               <li>
+                  <div (click)="setCategory('Water and Drinks')" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                     Water and Drinks</div>
+               </li>
+               <li>
+                  <div (click)="setCategory('Snacks')" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">Snacks</div>
+               </li>
+            </ul>
+         </label>
+         <!-- price range dropdown-->
+         <label class="dropdown w-fit">
+            <div class="dd-button flex w-fit items-center">
+               <ng-container *ngIf="minPrice!=0 || maxPrice!=999">Price: {{minPrice|currency}} - {{maxPrice|currency}}</ng-container>
+               <ng-container *ngIf="minPrice==0 && maxPrice==999">Price: Any</ng-container>
+               <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     d="m1 1 4 4 4-4" />
+               </svg>
+            </div>
+      
+            <input type="checkbox" class="dd-input" id="test">
+      
+            <ul class="dd-menu z-30">
+               <li>
+                  <div (click)="setPriceRange(0, 999)"
+                     class="stars flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                     Any
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setPriceRange(0, 20)" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">{{0|currency}}
+                     - {{20|currency}}
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setPriceRange(20, 50)" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                     {{20|currency}} - {{50|currency}}
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setPriceRange(50, 100)" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                     {{50|currency}} - {{100|currency}}</div>
+               </li>
+               <li>
+                  <div (click)="setPriceRange(100, 999)" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                     {{100|currency}} & up</div>
+               </li>
+            </ul>
+         </label>
+         <!-- rating range dropdown-->
+         <label class="dropdown w-fit">
+            <div class="dd-button flex w-fit items-center">
+               <ng-container *ngIf="minRating==0">Rating: Any</ng-container>
+               <ng-container *ngIf="minRating!=0">Rating: 
+                  <div class=" ml-2 stars flex items-center mb-1 hover:bg-gray-100 cursor-pointer">
+                     <div *ngFor="let _ of [].constructor(minRating)">
+                        <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                           fill="currentColor" viewBox="0 0 22 20">
+                           <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                     </div>
+                     <div *ngFor="let _ of [].constructor(5-minRating)">
+                        <svg class="w-4 h-4 text-gray-300 me-1 dark:text-gray-500" aria-hidden="true"
+                           xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                           <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                     </div>
+                  </div>
+               </ng-container>
+               <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     d="m1 1 4 4 4-4" />
+               </svg>
+            </div>
+            <input type="checkbox" class="dd-input" id="test">
+            <ul class="dd-menu z-30">
+      
+               <li>
+                  <div (click)="setMinRating(0)" class="stars flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                     Any
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setMinRating(5)"
+                     class="stars flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer">
+                     <div *ngFor="let _ of [].constructor(5)">
+                        <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                           fill="currentColor" viewBox="0 0 22 20">
+                           <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                     </div>
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setMinRating(4)"
+                     class="stars flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer">
+                     <div *ngFor="let _ of [].constructor(4)">
+                        <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                           fill="currentColor" viewBox="0 0 22 20">
+                           <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                     </div>
+                     <div>
+                        <svg class="w-4 h-4 text-gray-300 me-1 dark:text-gray-500" aria-hidden="true"
+                           xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                           <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                     </div>
+                     & up
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setMinRating(3)"
+                     class="stars flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer">
+                     <div *ngFor="let _ of [].constructor(3)">
+                        <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                           fill="currentColor" viewBox="0 0 22 20">
+                           <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                     </div>
+                     <div *ngFor="let _ of [].constructor(2)">
+                        <svg class="w-4 h-4 text-gray-300 me-1 dark:text-gray-500" aria-hidden="true"
+                           xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                           <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                     </div>
+                     & up
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setMinRating(2)"
+                     class="stars flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer">
+                     <div *ngFor="let _ of [].constructor(2)">
+                        <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                           fill="currentColor" viewBox="0 0 22 20">
+                           <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                     </div>
+                     <div *ngFor="let _ of [].constructor(3)">
+                        <svg class="w-4 h-4 text-gray-300 me-1 dark:text-gray-500" aria-hidden="true"
+                           xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                           <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                     </div>
+                     & up
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setMinRating(1)"
+                     class="stars flex items-center px-4 py-3 hover:bg-gray-100 cursor-pointer">
+                     <div *ngFor="let _ of [].constructor(1)">
+                        <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                           fill="currentColor" viewBox="0 0 22 20">
+                           <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                     </div>
+                     <div *ngFor="let _ of [].constructor(4)">
+                        <svg class="w-4 h-4 text-gray-300 me-1 dark:text-gray-500" aria-hidden="true"
+                           xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+                           <path
+                              d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                     </div>
+                     & up
+                  </div>
+               </li>
+            </ul>
+         </label>
+      </div>
+      <!-- order by -->
+      <div class="filters flex items-center">
+         <label class="dropdown w-fit">
+            <div class="dd-button flex w-fit items-center">
+               Sort By: {{sortingOrder}}
+               <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                  viewBox="0 0 10 6">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+               </svg>
+            </div>
+         
+            <input type="checkbox" class="dd-input" id="test">
+         
+            <ul class="dd-menu z-30">
+               <li>
+                  <div (click)="setSortBy('Latest')"
+                     class="stars flex items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                     Latest
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setSortBy('Price - Low to High')" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">Price - Low to High
+                  </div>
+               </li>
+               <li>
+                  <div (click)="setSortBy('Price - High to Low')" class="block px-4 py-2 hover:bg-gray-100 cursor-pointer">Price - High to Low
+                  </div>
+               </li>
+            </ul>
+         </label>
+      </div>
+   </div>
+   <app-product-list [products]="products" ></app-product-list>  
+</div>
+
+
+
