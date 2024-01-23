@@ -12,4 +12,9 @@ export interface Product {
    brand: string;
    description: string;
    SKU: string;
+   ShoppingCartProduct?: ShoppingCartProduct
+}
+
+export interface ShoppingCartProduct {
+   quantity: number;
 }

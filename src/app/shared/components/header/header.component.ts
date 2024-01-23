@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../../modules/user/services/user.service';
+import { CartService } from '../../../modules/cart/services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,10 @@ import { UserService } from '../../../modules/user/services/user.service';
 export class HeaderComponent implements OnInit{
    authenticated!: boolean;
    subscription!: Subscription;
-   constructor(private userService: UserService) {
+   cartSubtotal: number = 0;
+   cartProductQuantity: number = 0;
+   
+   constructor(private userService: UserService, private cartService: CartService) {
    }
 
    ngOnInit(): void {
@@ -19,6 +23,14 @@ export class HeaderComponent implements OnInit{
          console.log(this.authenticated)
       })
       this.checkSession()
+      this.cartSubtotal = localStorage.getItem('cartSubtotal') ? Number(localStorage.getItem('cartSubtotal')) : 0
+      this.cartProductQuantity = localStorage.getItem('cartQuantity') ? Number(localStorage.getItem('cartQuantity')) : 0
+      this.cartService.total.subscribe((total: number) => {
+         this.cartSubtotal = total
+      })
+      this.cartService.productsInCart.subscribe((products: number) => {
+         this.cartProductQuantity = products
+      })
    }
 
    checkSession() {

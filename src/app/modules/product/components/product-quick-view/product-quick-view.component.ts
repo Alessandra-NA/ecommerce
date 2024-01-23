@@ -3,6 +3,7 @@ import { Product } from '../../interfaces/product';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CartService } from '../../../cart/services/cart.service';
 
 @Component({
    selector: 'app-product-quick-view',
@@ -10,13 +11,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
    styleUrl: './product-quick-view.component.css'
 })
 export class ProductQuickViewComponent implements OnInit {
+   loading = false;
    @Input() product!: Product;
    productId: number = +this.route.snapshot.paramMap.get('id')!;
    addToCartForm = new FormGroup({
       productQuantity: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(10)]),
    });
    
-   constructor(private route: ActivatedRoute, private productService: ProductService, private cdr: ChangeDetectorRef) {
+   constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService, private cdr: ChangeDetectorRef) {
    }
    ngOnInit(): void {
       if (this.product === undefined) {
@@ -50,8 +52,20 @@ export class ProductQuickViewComponent implements OnInit {
    }
 
    onAddToCart() {
+      this.loading = true;
       const quantity = this.addToCartForm.get('productQuantity')!.value!
       this.addToCartForm.get('productQuantity')!.setValue(1)
+      this.cartService.addProduct(this.product.id, quantity).subscribe({
+         next: (res) => {
+            this.loading = false
+            this.cartService.updateCartSubtotal(res)
+            this.cartService.updateCartNumberOfProducts(res)
+            console.log(res)
+         },
+         error: (error) => {
+            console.log(error)
+         }
+      })     
    }
    
 }

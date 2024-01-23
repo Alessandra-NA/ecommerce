@@ -1,0 +1,36 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Cart } from '../interfaces/cart';
+import { map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+   
+export class CartService {
+   private apiUrl = 'http://localhost:3000/cart';
+   constructor(private http: HttpClient) { }
+   total = new BehaviorSubject<number>(0);
+   productsInCart = new BehaviorSubject<number>(0);
+   
+   addProduct(productId: number, quantity: number) {
+      const url = this.apiUrl + '/addProduct';
+      const body = { productId, quantity }
+      return this.http.post<Cart>(url, body, { withCredentials: true })
+   }
+
+   updateCartSubtotal(resp: Cart) {
+      var subtotal = 0
+      resp.products.forEach(product => {
+         const productPrice = (product.discountPrice == 0) ? product.price : product.discountPrice
+         subtotal += productPrice * product.ShoppingCartProduct!.quantity
+      });
+      localStorage.setItem('cartSubtotal', subtotal.toString())
+      this.total.next(subtotal)
+   }
+   updateCartNumberOfProducts(resp: Cart) {
+      localStorage.setItem('cartQuantity', resp.products.length.toString())
+      this.productsInCart.next(resp.products.length)
+   }
+}

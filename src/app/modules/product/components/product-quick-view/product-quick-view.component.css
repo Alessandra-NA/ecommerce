@@ -31,6 +31,13 @@ input[type=number]::-webkit-outer-spin-button {
    margin: 0;
 }
 
+button:disabled,
+button[disabled] {
+   border: 1px solid #c5c5c5;
+   background-color: #e5e5e5;
+   color: #666666;
+}
+
 
 
 /**

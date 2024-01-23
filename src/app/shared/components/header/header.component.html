@@ -92,11 +92,11 @@
                <span class="sr-only">Notifications</span>
                <div
                   class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-dark-green border-2 border-white rounded-full -top-0.5 -end-1">
-                  20</div>
+                  {{cartProductQuantity}}</div>
             </button>
             <div class="flex-col relative hidden md:flex">
                <p class="text-light-gray">Shopping cart</p>
-               <p class="font-medium">$0.00</p>
+               <p class="font-medium">{{cartSubtotal | currency}}</p>
             </div>
       </div>
    </div>
