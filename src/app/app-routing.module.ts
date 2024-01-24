@@ -6,6 +6,7 @@ import { HomeComponent } from './modules/home/components/home/home.component';
 import { CreateProductComponent } from './modules/product/components/create-product/create-product.component';
 import { ProductDetailsComponent } from './modules/product/components/product-details/product-details.component';
 import { AllProductsComponent } from './modules/product/components/all-products/all-products.component';
+import { OverviewComponent } from './modules/cart/components/overview/overview.component';
 
 const routes: Routes = [
    { path: '', component:  HomeComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
    { path: 'signup', component: SignupComponent },
    { path: 'new-product', component: CreateProductComponent },
    { path: 'product-details/:id', component: ProductDetailsComponent },
-   { path: 'shop', component: AllProductsComponent }
+   { path: 'shop', component: AllProductsComponent },
+   { path: 'cart', component: OverviewComponent }
    
 ];
 

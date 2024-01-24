@@ -74,7 +74,7 @@
             class="text-white h-10 bg-light-green hover:bg-dark-green font-medium rounded-md text-sm px-5 hidden md:block">Search</button>
       </div>
       <!-- Shopping Cart -->
-      <div class="buttons flex gap-4" *ngIf="authenticated">
+      <div [routerLink]="['/cart']" class="buttons cursor-pointer flex gap-4" *ngIf="authenticated">
          <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false"
             class="md:hidden text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 me-1">
             <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">

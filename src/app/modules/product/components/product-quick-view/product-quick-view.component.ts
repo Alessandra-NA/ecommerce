@@ -58,9 +58,6 @@ export class ProductQuickViewComponent implements OnInit {
       this.cartService.addProduct(this.product.id, quantity).subscribe({
          next: (res) => {
             this.loading = false
-            this.cartService.updateCartSubtotal(res)
-            this.cartService.updateCartNumberOfProducts(res)
-            console.log(res)
          },
          error: (error) => {
             console.log(error)
