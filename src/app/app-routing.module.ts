@@ -7,6 +7,7 @@ import { CreateProductComponent } from './modules/product/components/create-prod
 import { ProductDetailsComponent } from './modules/product/components/product-details/product-details.component';
 import { AllProductsComponent } from './modules/product/components/all-products/all-products.component';
 import { OverviewComponent } from './modules/cart/components/overview/overview.component';
+import { SearchProductComponent } from './modules/product/components/search-product/search-product.component';
 
 const routes: Routes = [
    { path: '', component:  HomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
    { path: 'new-product', component: CreateProductComponent },
    { path: 'product-details/:id', component: ProductDetailsComponent },
    { path: 'shop', component: AllProductsComponent },
-   { path: 'cart', component: OverviewComponent }
+   { path: 'cart', component: OverviewComponent },
+   { path: 'search/:searchString', component: SearchProductComponent}
    
 ];
 

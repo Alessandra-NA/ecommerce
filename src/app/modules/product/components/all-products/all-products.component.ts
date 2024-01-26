@@ -14,13 +14,19 @@ export class AllProductsComponent {
    maxPrice = 999
    minRating = 0
    sortingOrder = 'Latest'
+   showNotFound = false
+
    constructor(private productService: ProductService) { }
    ngOnInit(): void {
-      this.getFeatured()
+      if (window.history.state.category) {
+         this.setCategory(window.history.state.category)
+      }
+      else this.getFeatured()
    }
    getFeatured() {
       this.productService.getFeatured().subscribe(data => {
          this.products = data
+         if (this.products.length === 0) this.showNotFound = true
       })
    }
 
@@ -48,6 +54,7 @@ export class AllProductsComponent {
    updateProductList() {
       this.productService.getFilteredProducts(this.category, this.minPrice, this.maxPrice, this.minRating, this.sortingOrder).subscribe(data => {
          this.products = data
+         if (this.products.length === 0) this.showNotFound = true
       })
    }
 }

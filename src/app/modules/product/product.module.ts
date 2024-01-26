@@ -8,6 +8,7 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { ProductQuickViewComponent } from './components/product-quick-view/product-quick-view.component';
 import { RouterModule } from '@angular/router';
 import { AllProductsComponent } from './components/all-products/all-products.component';
+import { SearchProductComponent } from './components/search-product/search-product.component';
 
 
 
@@ -18,7 +19,8 @@ import { AllProductsComponent } from './components/all-products/all-products.com
       CreateProductComponent,
       ProductDetailsComponent,
       ProductQuickViewComponent,
-      AllProductsComponent
+      AllProductsComponent,
+      SearchProductComponent
    ],
   imports: [
      CommonModule,

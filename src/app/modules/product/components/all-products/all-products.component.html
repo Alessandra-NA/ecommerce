@@ -249,7 +249,11 @@
          </label>
       </div>
    </div>
-   <app-product-list [products]="products" ></app-product-list>  
+   <app-product-list [products]="products" *ngIf="products.length>0"></app-product-list>  
+   <div *ngIf="showNotFound" class="flex w-full flex-col items-center mt-5 mb-10">
+      <p class="text-lg font-medium">No products found</p>
+      <a [routerLink]="['/']" class="text-light-green">Go back to Home</a>
+   </div>
 </div>
 
 

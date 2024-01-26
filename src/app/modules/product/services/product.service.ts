@@ -38,4 +38,10 @@ export class ProductService {
       console.log(body)
       return this.http.post<Product[]>(url, body);
    }
+
+   getProductsFromSearch(searchString: string) {
+      const url = this.apiUrl + '/search';
+      const body = { searchString }
+      return this.http.post<Product[]>(url, body);
+   }
 }

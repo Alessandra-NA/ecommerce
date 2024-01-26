@@ -56,7 +56,7 @@
          <p class="text-3xl font-medium ml-2">Ecobazar</p>
       </div>
       <!-- Search bar -->
-      <div class="flex h-full">
+      <form class="flex h-full gap-2" (submit)="search()">
          <div class="relative hidden md:block h-10">
             <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -66,13 +66,12 @@
                </svg>
                <span class="sr-only">Search icon</span>
             </div>
-            <input type="text" id="search-navbar"
+            <input type="text" name="search-navbar" [(ngModel)]="searchString"
                class="block w-full h-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-light-green focus:border-light-green"
                placeholder="Search...">
          </div>
-         <button type="button"
-            class="text-white h-10 bg-light-green hover:bg-dark-green font-medium rounded-md text-sm px-5 hidden md:block">Search</button>
-      </div>
+         <button type="submit" class="text-white h-10 bg-light-green hover:bg-dark-green font-medium rounded-md text-sm px-5 hidden md:block">Search</button>
+      </form>
       <!-- Shopping Cart -->
       <div [routerLink]="['/cart']" class="buttons cursor-pointer flex gap-4" *ngIf="authenticated">
          <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false"

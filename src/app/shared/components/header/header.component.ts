@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../../modules/user/services/user.service';
 import { CartService } from '../../../modules/cart/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +14,9 @@ export class HeaderComponent implements OnInit{
    subscription!: Subscription;
    cartSubtotal: number = 0;
    cartProductQuantity: number = 0;
+   searchString: string = ''
    
-   constructor(private userService: UserService, private cartService: CartService) {
+   constructor(private userService: UserService, private cartService: CartService, private router: Router) {
    }
 
    ngOnInit(): void {
@@ -50,5 +52,11 @@ export class HeaderComponent implements OnInit{
          localStorage.removeItem('userData');
          window.location.reload();
       })
+   }
+
+   search() {
+      this.router.navigate(['/search/' + this.searchString]).then(() => {
+         window.location.reload();
+      });
    }
 }
