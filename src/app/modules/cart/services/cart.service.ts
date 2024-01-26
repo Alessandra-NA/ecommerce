@@ -19,6 +19,10 @@ export class CartService {
       const body = { productId, quantity }
       return this.http.post<Cart>(url, body, { withCredentials: true }).pipe(
          map((resp) => {
+            let audio = new Audio();
+            audio.src = '../../../assets/success-sound-final.mp3';
+            audio.load();
+            audio.play();
             this.updateCartSubtotal(resp)
             this.updateCartNumberOfProducts(resp)
             localStorage.setItem('cart', JSON.stringify(resp))

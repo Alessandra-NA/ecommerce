@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserService {
    private apiUrl = 'http://localhost:3000/user';
-   private authenticated = new BehaviorSubject<boolean>(false);
+   authenticated = new BehaviorSubject<boolean>(false);
    wasAuthenticated = this.authenticated.asObservable();
    constructor(private http: HttpClient) { }
 
