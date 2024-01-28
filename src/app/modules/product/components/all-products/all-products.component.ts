@@ -24,7 +24,7 @@ export class AllProductsComponent {
       else this.getFeatured()
    }
    getFeatured() {
-      this.productService.getFeatured().subscribe(data => {
+      this.productService.getAllProducts().subscribe(data => {
          this.products = data
          if (this.products.length === 0) this.showNotFound = true
       })

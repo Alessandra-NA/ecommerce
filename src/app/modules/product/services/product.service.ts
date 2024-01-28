@@ -17,6 +17,11 @@ export class ProductService {
       return this.http.post<Product>(url, data, { withCredentials: true });
    }
 
+   getAllProducts() {
+      const url = this.apiUrl;
+      return this.http.get<Product[]>(url);
+   }
+
    getProduct(id: number) {
       const url = this.apiUrl + '/get/' + id;
       return this.http.get<Product>(url);
@@ -35,7 +40,6 @@ export class ProductService {
    getFilteredProducts(category: string, minPrice: number, maxPrice: number, minRating: number, sortingOrder: string) {
       const url = this.apiUrl + '/filter'
       const body = { category, minPrice, maxPrice, minRating, sortingOrder }
-      console.log(body)
       return this.http.post<Product[]>(url, body);
    }
 

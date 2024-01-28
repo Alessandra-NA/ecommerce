@@ -1,15 +1,20 @@
-<div *ngIf="cardType === 'vertical'" class="cursor-pointer max-w-sm bg-white border border-gray-200 hover:border-light-green rounded-lg shadow w-48 min-w-48"
+<div
+   class="card relative cursor-pointer max-w-sm bg-white border border-gray-200 hover:border-light-green rounded-lg shadow w-48"
    [routerLink]="['/product-details/', product.id]" [state]="{product: product}">
-   <div *ngIf="product.discountPrice>0" class="relative left-3 top-3 bg-bright-red w-fit px-2 py-1 text-xs text-white rounded-md font-normal">
+   <div *ngIf="product.discountPrice>0"
+      class="absolute left-3 top-3 bg-bright-red w-fit px-2 py-1 text-xs text-white rounded-md font-normal">
       Sale {{(product.price-product.discountPrice)/product.price | percent}}
    </div>
-   <div href="#">
-      <img class="rounded-t-lg object-contain p-5" [src]="product.images[0]" alt="" />
+   <div href="#" class="">
+      <img class="rounded-t-lg object-contain px-5 py-2 h-40 w-48" [src]="product.images[0]" alt="" />
    </div>
-   <div class="p-5 text-sm flex justify-between items-center">
-      <div class="info">
-         <p>{{product.name}}</p>
-         <p class="font-semibold">${{product.price}}</p>
+   <div class="px-5 py-2 text-sm flex justify-between items-center">
+      <div class="info flex flex-col justify-between h-full">
+         <p class="text-ellipsis overflow-hidden w-24 max-h-10 mb-2 leading-tight">{{product.name}}</p>
+         <div class="flex gap-1">
+            <p class="font-semibold">{{(product.discountPrice == 0 ? product.price : product.discountPrice) | currency}}</p>
+            <p *ngIf="product.discountPrice != 0" class="text-gray-400 line-through">{{product.price | currency}}</p>
+         </div>
          <div class="rating flex items-center mt-1">
             <div *ngFor="let i of getRange(product.rating)">
                <svg class="w-4 h-4 text-yellow-300 me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"

@@ -1,7 +1,7 @@
-<div class="container w-4/5 mx-auto my-5">
-   <div class="flex justify-between mb-5">
+<div class="container md:w-4/5 mx-auto my-5">
+   <div class="flex gap-2 justify-between mb-5 mx-3">
       <!-- search filters -->
-      <div class="filters flex items-center gap-2">
+      <div class="filters flex flex-wrap items-center gap-2">
          <!-- category dropdown-->
          <label class="dropdown w-fit">
             <div class="dd-button flex w-fit items-center">
@@ -249,7 +249,10 @@
          </label>
       </div>
    </div>
-   <app-product-list [products]="products" *ngIf="products.length>0"></app-product-list>  
+   <div class="max-w-full w-fit mx-auto">
+      <app-product-list [products]="products" *ngIf="products.length>0"></app-product-list>
+   </div>
+   
    <div *ngIf="showNotFound" class="flex w-full flex-col items-center mt-5 mb-10">
       <p class="text-lg font-medium">No products found</p>
       <a [routerLink]="['/']" class="text-light-green">Go back to Home</a>

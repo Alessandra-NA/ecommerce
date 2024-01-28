@@ -1,29 +1,9 @@
-<div class="items-center w-full flex flex-col mt-10">
+<div class="items-center w-full flex flex-col mt-16">
    <h3 class="text-3xl font-semibold w-fit">Featured Products</h3>
    <div class="divisor bg-light-green w-10 h-1  mt-3 mb-8"></div>
-   <div class="content">
-      <app-product-list [products]="featuredProducts"></app-product-list>
-      <div class="w-full flex">
-         <!--best seller-->
-         <!--hot deals-->
-         <!--top rated-->
-         <div class="banner relative w-60">
-            <img src="https://cdn.discordapp.com/attachments/1191538444468490342/1192937927689384048/banner2.png?ex=65aae505&is=65987005&hm=cc525b92844307f30c65c70f15181fe61ebbb3cae5e8544f2d00dbcae8b329d9&" alt="" srcset="">
-            <div class="absolute top-10 w-full flex flex-col items-center">
-               <p class="font-medium text-xs">SUMMER SALE</p>
-               <p class="font-semibold text-2xl text-light-green">75% off</p>
-               <button type="button" [routerLink]="['/shop']"
-                  class="flex items-center text-light-green h-10 bg-white border-light-green hover:border-dark-green hover:text-dark-green stroke-light-green hover:stroke-dark-green border-2 font-medium rounded-full text-sm px-7 py-3 mt-2">
-                  Shop Now
-                  <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="17" height="15" viewBox="0 0 17 15" fill="none">
-                     <path d="M16 7.50055H1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                     <path d="M9.9502 1.47552L16.0002 7.49953L9.9502 13.5245" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" />
-                  </svg>
-               </button>
-            </div>
-         </div>
-
+   <div class="content  w-full">
+      <div class="h-fit max-w-full w-fit overflow-x-auto overflowed-div pb-2 mx-auto">
+         <app-product-list [products]="featuredProducts"></app-product-list>
       </div>
    </div>
 </div>

@@ -27,7 +27,7 @@ class="w-10/12 flex gap-3 flex-col mx-auto">
          placeholder="Ex. 10.99" >
    </div>
    <div>
-      <label class="block mb-2 text-sm font-medium text-gray-900">Discounted price</label>
+      <label class="block mb-2 text-sm font-medium text-gray-900">Price with discount</label>
       <input type="number"  formControlName="discountPrice"
          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:border-light-green focus:ring-light-green block w-full p-2.5"
          placeholder="Default: 0 (no discount)" >
@@ -90,7 +90,7 @@ class="w-10/12 flex gap-3 flex-col mx-auto">
          </div>
       </div>
       <div class="flex gap-3">
-         <input type="text" formControlName="productImageUrls"
+         <input (keyup.enter)="addImage()" type="text" formControlName="productImageUrls"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:border-light-green focus:ring-light-green block p-2.5"
             placeholder="Image URL" >
          <button (click)="addImage()" type="button"
@@ -125,7 +125,7 @@ class="w-10/12 flex gap-3 flex-col mx-auto">
    <div>
       <label class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Tags</label>
       <div class="flex gap-2 mb-2" *ngIf="tags.length>0">
-         <button (click)="removeTag(tag)" *ngFor="let tag of tags" class="secondary-button bg-gray-200 w-fit px-2 rounded-md flex items-center gap-2">
+         <button type="button" (click)="removeTag(tag)" *ngFor="let tag of tags" class="secondary-button bg-gray-200 w-fit px-2 rounded-md flex items-center gap-2">
             {{tag}} <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                class="w-4 h-4">
                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -133,7 +133,7 @@ class="w-10/12 flex gap-3 flex-col mx-auto">
          </button>
       </div>
       <div class="flex gap-3">
-         <input type="text" formControlName="productTags"
+         <input (keyup.enter)="addTag()" type="text" formControlName="productTags"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  focus:border-light-green focus:ring-light-green block p-2.5"
             placeholder="Tag" >
          <button type="button" (click)="addTag()"

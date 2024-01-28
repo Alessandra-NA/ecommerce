@@ -1,0 +1,7 @@
+
+
+@media (min-width: 1024px) { 
+.grid-custom {
+      grid-template-columns: auto 1fr 1fr;
+   }
+}

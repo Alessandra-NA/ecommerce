@@ -1,7 +1,7 @@
 <div class="w-4/5 mx-auto">
    <app-product-quick-view [product]="product"></app-product-quick-view>
-   <div *ngIf="relatedProducts.length>0" class="my-10">
-      <h2 class="text-3xl font-semibold mx-auto w-fit">Related Products</h2>
-      <app-product-list [products]="relatedProducts"></app-product-list>
+   <div *ngIf="relatedProducts.length>0" class="my-14">
+      <h2 class="text-2xl font-semibold mx-auto w-fit mb-4">Related Products</h2>
+      <app-product-list [products]="relatedProducts" class="w-fit mx-auto"></app-product-list>
    </div>
 </div>

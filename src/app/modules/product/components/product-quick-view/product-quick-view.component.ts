@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartService } from '../../../cart/services/cart.service';
+import { UserService } from '../../../user/services/user.service';
 
 @Component({
    selector: 'app-product-quick-view',
@@ -17,17 +18,20 @@ export class ProductQuickViewComponent implements OnInit {
    addToCartForm = new FormGroup({
       productQuantity: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(10)]),
    });
+   logged = true
    
-   constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService, private cdr: ChangeDetectorRef) {
+   constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService, private userService: UserService, private cdr: ChangeDetectorRef) {
    }
    ngOnInit(): void {
       if (this.product === undefined) {
          this.productService.getProduct(this.productId).subscribe(data => {
             this.product = data
             this.cdr.detectChanges();
-            console.log(this.product)
          });
       }
+      this.userService.authenticated.subscribe((auth: boolean) => {
+         this.logged = auth
+      })
    }
    getRange(n: number): number[] {
       return Array.from({ length: n }, (_, index) => index + 1);

@@ -1,6 +1,6 @@
-<div class="flex items-center gap-8">
+<div class="flex flex-col md:flex-row items-center gap-8 mt-5">
    <!--IMAGES-->
-   <div class="carousel-container w-1/2 h-full">
+   <div class="carousel-container md:w-1/2 w-full h-full">
       <ul class="carousel my-carousel carousel--thumb h-96 inset-0 p-10">
          <ng-container *ngFor="let image of product.images; let i = index" class="">
             <input class="carousel__activator" type="radio" id="{{ 'radio-' + i }}" name="thumb" [checked]="i === 0" />
@@ -24,7 +24,7 @@
    </div>
    
    <!--INFO-->
-   <div class="w-1/2 pl-3 flex flex-col gap-2">
+   <div class="w-full md:w-1/2 pl-3 flex flex-col gap-2">
       <!-- Name & stock label -->
       <div class="title flex items-center h-fit justify-between w-full">
          <h3 class="text-3xl font-semibold">{{product.name}}</h3>
@@ -77,7 +77,7 @@
             <button type="button" (click)="handlePlus()" class="h-7 w-7 rounded-full bg-gray-200 m-auto">+</button>
          </div>
          <!-- Add to cart -->
-         <button type="submit" *ngIf="!loading"
+         <button [disabled]="!logged" type="submit" *ngIf="!loading"
             class="text-white h-10 bg-light-green hover:bg-dark-green font-medium text-sm w-3/4 rounded-3xl">Add to Cart
          </button>
          <button disabled *ngIf="loading"
@@ -94,6 +94,7 @@
             <span class="sr-only">Loading...</span>
          </button>
       </form>
+      <p *ngIf="!logged" class="text-bright-red">Please log in to add to cart.</p>
       <!-- Category and tags -->
       <div class="divider"></div>
       <p><b>Category: </b>{{product.category}}</p>

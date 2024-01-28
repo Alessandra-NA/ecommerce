@@ -57,6 +57,7 @@ export class CreateProductComponent implements OnInit {
    }
 
    removeTag(tag: string) {
+      console.log('remove tag')
       const index = this.tags.indexOf(tag);
       if (index > -1) {
          this.tags.splice(index, 1);

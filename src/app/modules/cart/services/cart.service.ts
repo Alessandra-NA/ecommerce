@@ -50,7 +50,6 @@ export class CartService {
             this.updateCartSubtotal(resp)
             this.updateCartNumberOfProducts(resp)
             localStorage.setItem('cart', JSON.stringify(resp))
-            console.log(resp)
             return resp
          })
       )

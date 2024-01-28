@@ -1,8 +1,8 @@
-<div class="items-center w-full flex flex-col mt-10">
-   <h3 class="text-3xl font-semibold w-fit">Top Categories</h3>
-   <div class="divisor bg-light-green w-10 h-1 mt-3 mb-8"></div>
-   <div class="categories grid grid-flow-col grid-cols-6 w-full justify-stretch gap-4">
-      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer" [routerLink]="['/shop']" [state]="{category: 'Vegetables'}">
+<div class="items-center w-full  mt-10">
+   <h3 class="text-3xl font-semibold w-fit mx-auto">Top Categories</h3>
+   <div class="divisor bg-light-green w-10 h-1 mt-3 mb-8 mx-auto"></div>
+   <div class="categories grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 w-fit gap-4 mx-auto">
+      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer min-w-32 max-w-52 px-2" [routerLink]="['/shop']" [state]="{category: 'Vegetables'}">
          <svg class="mt-8 mb-5 w-full" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
             <path
                d="M77.5002 44.9375V47.5625C77.5002 51.9875 75.6502 56.1875 72.4377 59.2125L67.5752 58.475C69.1377 55.9 70.0002 52.9 70.0002 49.8V45.2C70.0002 42.6125 69.4002 40.1 68.3002 37.85C67.4877 36.175 66.3752 34.65 65.0127 33.3375L65.0252 33.325C65.7252 32.05 67.0627 31.25 68.5502 31.25C69.4127 31.25 70.2502 31.525 70.9502 32.0375C75.0752 35.0875 77.5002 39.8625 77.5002 44.9375Z"
@@ -51,7 +51,7 @@
             <span class="text-sm text-light-gray" class="text-sm text-light-gray">165 Products</span>
          </div>
       </div>
-      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer" [routerLink]="['/shop']" [state]="{category: 'Fresh Fruit'}">
+      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer min-w-32 max-w-52 px-2" [routerLink]="['/shop']" [state]="{category: 'Fresh Fruit'}">
          <svg class="mt-8 mb-5 w-full" mlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
             <g clip-path="url(#clip0_2111_12555)">
             <path d="M74.3941 12.887C73.9912 11.6235 73.2729 10.6342 72.3787 9.92493C71.8257 9.48669 71.5126 8.81287 71.5126 8.1073V2.34375C71.5126 1.69678 70.9883 1.17188 70.3407 1.17188H67.997C67.35 1.17188 66.8251 1.69678 66.8251 2.34375V7.23206C66.8251 8.09753 66.3515 8.89832 65.5843 9.29871C64.4795 9.87549 63.5243 10.8081 62.903 12.1094C60.2834 17.5958 55.6343 28.9551 46.0854 38.4857C36.5547 48.0347 25.1955 52.6837 19.709 55.3033C14.6834 57.7026 15.1271 65.0867 20.4866 66.7944C23.6171 67.7917 27.0943 68.2697 30.7344 68.2037C41.3558 68.0121 52.527 62.0551 61.0909 53.4912C69.6553 44.9274 75.6117 33.7561 75.804 23.1348C75.8693 19.4946 75.3914 16.0175 74.3941 12.887Z" fill="#FFCF5D"/>
@@ -96,7 +96,7 @@
             <span class="text-sm text-light-gray">165 Products</span>
          </div>
       </div>
-      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer" [routerLink]="['/shop']" [state]="{category: 'Fish'}">
+      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer min-w-32 max-w-52 px-2" [routerLink]="['/shop']" [state]="{category: 'Fish'}">
          <svg class="mt-8 mb-5 w-full" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
             <path
                d="M46.1159 15.9961C51.8696 21.7499 55.6021 29.2149 56.7534 37.2699L59.9996 59.9999L37.2696 56.7524C29.2146 55.6011 21.7496 51.8686 15.9959 46.1149C10.3396 40.4586 6.63463 33.1461 5.41838 25.2411L2.54088 6.53488C2.37088 5.43238 2.73713 4.31488 3.52588 3.52613C4.31463 2.73738 5.43213 2.37113 6.53463 2.54113L25.2421 5.41863C33.1471 6.63488 40.4596 10.3399 46.1159 15.9961Z"
@@ -200,7 +200,7 @@
             <span class="text-sm text-light-gray">165 Products</span>
          </div>
       </div>
-      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer" [routerLink]="['/shop']" [state]="{category: 'Meat'}">
+      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer min-w-32 max-w-52 px-2" [routerLink]="['/shop']" [state]="{category: 'Meat'}">
          <svg  class="mt-8 mb-5 w-full" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
             <g clip-path="url(#clip0_516_4195)">
                <path
@@ -239,7 +239,7 @@
             <span class="text-sm text-light-gray">165 Products</span>
          </div>
       </div>
-      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer" [routerLink]="['/shop']" [state]="{category: 'Water and Drinks'}">
+      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer min-w-32 max-w-52 px-2" [routerLink]="['/shop']" [state]="{category: 'Water and Drinks'}">
          <svg class="mt-8 mb-5 w-full" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
             <path
                d="M75.4313 53.7062C74.3396 56.9801 74.3396 60.5199 75.4313 63.7938C75.9736 65.4206 76.25 67.1242 76.25 68.8391V71.8312C76.2499 72.7052 75.9907 73.5595 75.5051 74.2861C75.0195 75.0128 74.3294 75.5791 73.522 75.9136C72.7146 76.2481 71.8261 76.3356 70.9689 76.1652C70.1118 75.9948 69.3243 75.5741 68.7062 74.9563L67.5 73.75L66.7672 74.4828C65.6354 75.6144 64.1004 76.25 62.5 76.25C60.8996 76.25 59.3646 75.6144 58.2328 74.4828L57.5 73.75L56.2937 74.9563C55.6757 75.5741 54.8882 75.9948 54.0311 76.1652C53.1739 76.3356 52.2854 76.2481 51.478 75.9136C50.6706 75.5791 49.9805 75.0128 49.4949 74.2861C49.0093 73.5595 48.7501 72.7052 48.75 71.8312V68.8391C48.7502 67.1242 49.0266 65.4206 49.5687 63.7938C50.6604 60.5199 50.6604 56.9801 49.5687 53.7062C49.0355 52.1079 48.7597 50.4349 48.7516 48.75C48.75 48.7203 48.75 48.6906 48.75 48.6609V31.25C48.75 29.6647 49.0623 28.0949 49.669 26.6303C50.2757 25.1657 51.1649 23.835 52.2859 22.7141L53.9641 21.0359C55.9212 19.0765 57.1462 16.5044 57.4344 13.75C57.4782 13.3348 57.5001 12.9175 57.5 12.5V10H67.5V12.5C67.4999 12.9175 67.5218 13.3348 67.5656 13.75C67.8538 16.5044 69.0788 19.0765 71.0359 21.0359L72.7141 22.7141C74.9779 24.978 76.2498 28.0484 76.25 31.25V48.6609C76.25 48.6906 76.25 48.7203 76.2484 48.75C76.2453 49.5765 76.1769 50.4015 76.0437 51.2172C75.9069 52.062 75.7021 52.8944 75.4313 53.7062Z"
@@ -331,7 +331,7 @@
             <span class="text-sm text-light-gray">165 Products</span>
          </div>
       </div>
-      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer" [routerLink]="['/shop']" [state]="{category: 'Snacks'}">
+      <div class="card rounded-t-lg border border-gray-200 col-span-1 cursor-pointer min-w-32 max-w-52 px-2" [routerLink]="['/shop']" [state]="{category: 'Snacks'}">
          <svg class="mt-8 mb-5 w-full" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
             <path
                d="M46.25 71.25H6.25C6.25 71.25 3.75 51.25 3.75 40C3.75 28.75 6.25 8.75 6.25 8.75H46.25C46.25 8.75 48.75 28.75 48.75 40C48.75 51.25 46.25 71.25 46.25 71.25Z"
@@ -393,11 +393,11 @@
          </div>
       </div>
    </div>
-   <div class="sales grid grid-flow-col grid-cols-3 w-full justify-stretch gap-4 my-12">
-      <div class="relative">
+   <div class="sales lg:grid-cols-3 justify-stretch gap-4 my-12 mx-auto h-fit w-5/6 lg:w-fit overflow-x-auto flex pb-2">
+      <div class="relative min-w-60 max-w-72 h-72">
          <img
          src="https://media.discordapp.net/attachments/1191538444468490342/1192952305897709588/deals-3.png?ex=65aaf269&is=65987d69&hm=3195a7b9ee691c5621c242b543e1e885ee507db81c77ec56e61a0976e4d9df18&=&format=webp&quality=lossless&width=672&height=897"
-         alt="" srcset=""> 
+         alt="" srcset="" class="w-full h-full"> 
          <div class="absolute top-5 w-full flex flex-col items-center">
             <p class="font-medium text-xs text-white">BEST DEALS</p>
             <p class="font-semibold text-2xl text-white my-3">Sale of the Month</p>
@@ -412,10 +412,10 @@
             </button>
          </div>
       </div>
-      <div class="relative">
+      <div class="relative min-w-60 max-w-72 h-72">
          <img
             src="https://media.discordapp.net/attachments/1191538444468490342/1192952304773644349/deals-2.png?ex=65aaf269&is=65987d69&hm=c602642256d18c80058739270ab994aed0ed1bab32b86c682d8ddcc39eeb2520&=&format=webp&quality=lossless&width=672&height=897"
-            alt="" srcset="">
+            alt="" srcset="" class="w-full h-full">
          <div class="absolute top-5 w-full flex flex-col items-center">
             <p class="font-medium text-xs text-white">85% FAT FREE</p>
             <p class="font-semibold text-2xl text-white my-3">Low-Fat Meat</p>
@@ -431,10 +431,10 @@
             </button>
          </div>
       </div>
-      <div class="relative">
+      <div class="relative min-w-60 max-w-72 h-72">
          <img
             src="https://media.discordapp.net/attachments/1191538444468490342/1192952304421318706/deals-1.png?ex=65aaf269&is=65987d69&hm=442b331c1dff06de7fbfa606447a1632e4dcb936ce517e30924cc81b9db32ae3&=&format=webp&quality=lossless&width=673&height=897"
-            alt="" srcset="">
+            alt="" srcset="" class="w-full h-full">
          <div class="absolute top-5 w-full flex flex-col items-center">
             <p class="font-medium text-xs text-gray-900">SUMMER SALE</p>
             <p class="font-semibold text-2xl text-gray-900 my-3">100% Fresh Fruit</p>

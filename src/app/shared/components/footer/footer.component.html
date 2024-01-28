@@ -1,6 +1,20 @@
-<div class="w-full flex flex-wrap items-center justify-between m-auto bg-gray-100">
-   <div class="flex items-center justify-between w-10/12 mx-auto my-10 gap-10">
-      <div class="brand flex">
+<div class="w-full flex flex-wrap items-center justify-between m-auto bg-gray-100 py-8">
+   <div class="grid grid-custom grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto gap-y-4 gap-x-3 lg:gap-x-5 w-4/5">
+      
+      <div class="mx-auto text-center md:text-left lg:col-span-1	lg:text-right">
+         <h4 class="font-medium text-xl">Subcribe our Newsletter</h4>
+         <p class="text-sm text-light-gray">Get E-mail updates about our latest shop and special offers.</p>
+      </div>
+      <div class="flex justify-center items-center lg:col-span-1 gap-1">
+         <div class="relative h-10 w-full">
+            <input type="text" id="search-navbar"
+               class="block w-full h-full text-sm ps-8 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-light-green focus:border-light-green"
+               placeholder="Your email address">
+         </div>
+         <button type="button"
+            class="text-white h-10 bg-light-green hover:bg-dark-green font-medium rounded-md text-sm px-5">Subscribe</button>
+      </div>
+      <div class="brand flex w-fit mx-auto mt-3 md:col-span-2  lg:row-start-1 lg:col-auto">
          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
             <path
                d="M31.2749 4.84308C27.4022 4.84308 21.9311 5.16711 19.1352 7.96154C17.9247 9.17204 17.3202 11.1454 17.4771 13.3789C17.4975 13.674 17.6937 13.9253 17.9756 14.0184C18.256 14.1099 18.5641 14.0241 18.7559 13.7989C20.3108 11.9694 22.2435 10.5032 24.5046 9.4409C24.6964 9.34935 24.9231 9.34206 25.1295 9.41474C25.3111 9.48013 25.4535 9.60363 25.5276 9.76207C25.6816 10.0876 25.6322 10.5163 25.1207 10.7575C25.0917 10.772 25.0655 10.7909 25.0365 10.804C25.0263 10.8083 25.0147 10.8069 25.006 10.8113C19.4346 13.4299 16.6954 17.9986 15.4514 22.6966C14.5446 16.8143 12.6294 13.3514 10.8202 11.2254C9.51095 9.52816 8.22341 8.62861 7.47943 8.12005C7.34136 8.02557 6.92435 7.74077 6.7514 7.56782C6.46803 7.28445 6.46803 6.82378 6.7514 6.54041C7.03477 6.25848 7.49687 6.25848 7.81218 6.57236C7.88923 6.64068 8.01272 6.72787 8.16966 6.8325L8.29902 6.91969C9.35108 7.64043 11.31 8.97879 13.0479 11.8604C13.2034 12.1176 13.5042 12.2557 13.7963 12.2005C14.0928 12.1481 14.3252 11.92 14.3834 11.625C14.7627 9.68796 14.5927 6.81356 12.8649 5.08578C10.069 2.29278 4.59789 1.96875 0.726671 1.96875C0.32553 1.96868 0 2.29421 0 2.69528C0 6.56793 0.324032 12.0391 3.11846 14.835C4.28387 16.0004 6.08147 16.5236 7.86736 16.5236C9.32486 16.5236 10.7533 16.1588 11.8476 15.5267C13.3399 18.619 14.5316 23.2386 14.5316 30.3053C14.5316 30.7064 14.8571 31.0319 15.2582 31.0319C15.6592 31.0319 15.9848 30.7064 15.9848 30.3053C15.9848 26.3629 16.6605 21.6314 19.173 17.7369C20.18 18.7207 21.9137 19.3441 23.8347 19.4022C23.9306 19.4052 24.0251 19.4066 24.1195 19.4066C26.0711 19.4066 27.796 18.7948 28.8815 17.7078C31.6773 14.912 31.9999 9.44083 31.9999 5.56811C32.0015 5.16711 31.6774 4.84308 31.2749 4.84308Z"
@@ -8,33 +22,20 @@
          </svg>
          <p class="text-3xl font-medium ml-2">Ecobazar</p>
       </div>
-      <div class="min-w-72">
-         <h4 class="font-medium text-xl">Subcribe our Newsletter</h4>
-         <p class="text-sm text-light-gray">Get E-mail updates about our latest shop and special offers.</p>
-      </div>
-      <div class="flex h-full">
-         <div class="relative hidden md:block h-10">
-            <input type="text" id="search-navbar"
-               class="block w-full h-full text-sm ps-8 text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-light-green focus:border-light-green"
-               placeholder="Your email address">
-         </div>
-         <button type="button"
-            class="text-white h-10 bg-light-green hover:bg-dark-green font-medium rounded-md text-sm px-5 hidden md:block">Subscribe</button>
-      </div>
    </div>
 </div>
 <div class="w-full flex flex-wrap items-center justify-between py-4 m-auto bg-gray-900">
-   <div class="grid grid-cols-7 gap-6 justify-between w-10/12 mx-auto my-10 text-white">
-      <div class="flex flex-col gap-4 basis-1/7 col-span-2">
+   <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 justify-between w-10/12 mx-auto my-10 text-white">
+      <div class="flex flex-col gap-4 text-center sm:row-span-2 lg:row-span-1 lg:col-span-2">
          <p class="text-xl font-medium">About Shopery</p>
          <p class="text-gray-400">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur deserunt molestias quisquam, neque accusantium odit?</p>
-         <div class="flex gap-3 text-gray-400">
-            <p class="text-white border-b-2 pb-1 border-light-green">(219) 555-0114</p>
+         <div class="text-gray-400 xl:flex xl:gap-1">
+            <p class="text-white border-b-2 pb-1 border-light-green w-fit mx-auto">(219) 555-0114</p>
             or
-            <p class="text-white border-b-2 pb-1 border-light-green">Proxy&#64;gmail.com</p>
+            <p class="text-white border-b-2 pb-1 border-light-green w-fit mx-auto">Proxy&#64;gmail.com</p>
          </div>
       </div>
-      <div class="flex flex-col gap-4 text-gray-400">
+      <div class="flex flex-col gap-2 text-gray-400 text-center">
          <p class="text-xl font-medium text-white">My account</p>
          <a href="">My account</a>
          <a href="">Order History</a>
@@ -42,56 +43,58 @@
          <a href="">Wishlist</a>
          <a href="">Settings</a>
       </div>
-      <div class="flex flex-col gap-4 text-gray-400">
-         <p class="text-xl font-medium text-white">Helps</p>
+      <div class="flex flex-col gap-2 text-gray-400 text-center">
+         <p class="text-xl font-medium text-white">Help</p>
          <a href="">Contact</a>
          <a href="">Faqs</a>
          <a href="">Terms &amp; Conditions</a>
          <a href="">Privacy Policy</a>
       </div>
-      <div class="flex flex-col gap-4 text-gray-400">
+      <div class="flex flex-col gap-2 text-gray-400 text-center">
          <p class="text-xl font-medium text-white">Proxy</p>
          <a href="">About</a>
          <a [routerLink]="['/shop']">Shop</a>
          <a href="">Product</a>
          <a href="">Track Order</a>
       </div>
-      <div class="flex flex-col gap-4 text-gray-400  col-span-2">
-         <p class="text-xl font-medium text-white">Download our Mobile App</p>
-         <div class="flex gap-2 p-3 rounded-lg bg-gray-800 text-gray-200 w-fit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
-               <g clip-path="url(#clip0_2111_14920)">
-                  <path
-                     d="M25.4242 22.0659C25.0158 23.0169 24.5115 23.9238 23.9192 24.7725C23.127 25.9013 22.4789 26.6824 21.9796 27.1164C21.2055 27.828 20.3754 28.1932 19.487 28.2136C18.8494 28.2136 18.0806 28.0322 17.1852 27.6641C16.2868 27.2978 15.4614 27.1158 14.7066 27.1158C13.915 27.1158 13.0662 27.2978 12.158 27.6641C11.2486 28.0322 10.5159 28.2241 9.95591 28.2428C9.10425 28.2795 8.25491 27.9044 7.40675 27.1164C6.866 26.6439 6.18991 25.8354 5.37908 24.6897C4.50933 23.4659 3.79416 22.0472 3.23416 20.429C2.6345 18.682 2.3335 16.9897 2.3335 15.3517C2.3335 13.4751 2.73891 11.8569 3.55091 10.5007C4.18966 9.41103 5.03841 8.55237 6.10125 7.9212C7.14394 7.29723 8.33368 6.96145 9.54875 6.9482C10.2254 6.9482 11.1127 7.15762 12.2157 7.56887C13.3153 7.98128 14.0212 8.1907 14.3309 8.1907C14.5619 8.1907 15.3465 7.9457 16.6759 7.45803C17.9336 7.00537 18.9947 6.81812 19.8638 6.8922C22.2199 7.08237 23.9897 8.01103 25.1663 9.68403C23.0599 10.9604 22.0175 12.7483 22.0385 15.0419C22.0572 16.8287 22.7052 18.3156 23.9792 19.4957C24.5567 20.044 25.2013 20.4675 25.9182 20.768C25.7679 21.2059 25.6032 21.6388 25.4242 22.0659ZM20.0213 0.805701C20.0213 2.2057 19.5097 3.51353 18.4901 4.72337C17.2592 6.16245 15.7712 6.9937 14.1571 6.86245C14.1354 6.68634 14.1245 6.50906 14.1244 6.33162C14.1244 4.98762 14.7095 3.54912 15.749 2.37253C16.2682 1.77695 16.9273 1.2817 17.7277 0.886784C18.5268 0.497701 19.2817 0.282451 19.9922 0.245117C20.0126 0.432367 20.0213 0.619617 20.0213 0.805117V0.805701Z"
-                     fill="white" />
-               </g>
-               <defs>
-                  <clipPath id="clip0_2111_14920">
-                     <rect width="28" height="28" fill="white" transform="translate(0 0.245117)" />
-                  </clipPath>
-               </defs>
-            </svg>
-            <div>
-               <p class="text-xs">Download on the</p>
-               <p class="text-sm">App Store</p>
+      <div class="text-gray-400 col-span-2 mx-auto sm:col-span-1 lg:col-span-2">
+         <p class="text-xl font-medium text-white text-center mb-3">Download our Mobile App</p>
+         <div class="buttons flex gap-2 sm:flex-col sm:items-center 2xl:flex-row">
+            <div class="flex gap-2 p-3 rounded-lg bg-gray-800 text-gray-200 w-fit">
+               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
+                  <g clip-path="url(#clip0_2111_14920)">
+                     <path
+                        d="M25.4242 22.0659C25.0158 23.0169 24.5115 23.9238 23.9192 24.7725C23.127 25.9013 22.4789 26.6824 21.9796 27.1164C21.2055 27.828 20.3754 28.1932 19.487 28.2136C18.8494 28.2136 18.0806 28.0322 17.1852 27.6641C16.2868 27.2978 15.4614 27.1158 14.7066 27.1158C13.915 27.1158 13.0662 27.2978 12.158 27.6641C11.2486 28.0322 10.5159 28.2241 9.95591 28.2428C9.10425 28.2795 8.25491 27.9044 7.40675 27.1164C6.866 26.6439 6.18991 25.8354 5.37908 24.6897C4.50933 23.4659 3.79416 22.0472 3.23416 20.429C2.6345 18.682 2.3335 16.9897 2.3335 15.3517C2.3335 13.4751 2.73891 11.8569 3.55091 10.5007C4.18966 9.41103 5.03841 8.55237 6.10125 7.9212C7.14394 7.29723 8.33368 6.96145 9.54875 6.9482C10.2254 6.9482 11.1127 7.15762 12.2157 7.56887C13.3153 7.98128 14.0212 8.1907 14.3309 8.1907C14.5619 8.1907 15.3465 7.9457 16.6759 7.45803C17.9336 7.00537 18.9947 6.81812 19.8638 6.8922C22.2199 7.08237 23.9897 8.01103 25.1663 9.68403C23.0599 10.9604 22.0175 12.7483 22.0385 15.0419C22.0572 16.8287 22.7052 18.3156 23.9792 19.4957C24.5567 20.044 25.2013 20.4675 25.9182 20.768C25.7679 21.2059 25.6032 21.6388 25.4242 22.0659ZM20.0213 0.805701C20.0213 2.2057 19.5097 3.51353 18.4901 4.72337C17.2592 6.16245 15.7712 6.9937 14.1571 6.86245C14.1354 6.68634 14.1245 6.50906 14.1244 6.33162C14.1244 4.98762 14.7095 3.54912 15.749 2.37253C16.2682 1.77695 16.9273 1.2817 17.7277 0.886784C18.5268 0.497701 19.2817 0.282451 19.9922 0.245117C20.0126 0.432367 20.0213 0.619617 20.0213 0.805117V0.805701Z"
+                        fill="white" />
+                  </g>
+                  <defs>
+                     <clipPath id="clip0_2111_14920">
+                        <rect width="28" height="28" fill="white" transform="translate(0 0.245117)" />
+                     </clipPath>
+                  </defs>
+               </svg>
+               <div>
+                  <p class="text-xs">Download on the</p>
+                  <p class="text-sm">App Store</p>
+               </div>
             </div>
-         </div>
-         <div class="flex gap-2 p-3 rounded-lg bg-gray-800 text-gray-200 w-fit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-               <g clip-path="url(#clip0_2111_14928)">
-                  <path
-                     d="M15.0652 11.7299L4.7188 1.35472L17.8828 8.91232L15.0652 11.7299ZM2.0176 0.745117C1.408 1.06432 1 1.64512 1 2.40112V23.0891C1 23.8451 1.408 24.4259 2.0176 24.7451L14.05 12.7427L2.0176 0.745117ZM21.9532 11.3219L19.192 9.72352L16.1116 12.7475L19.192 15.7715L22.0096 14.1731C22.8532 13.5023 22.8532 11.9927 21.9532 11.3219ZM4.7188 24.1403L17.8828 16.5827L15.0652 13.7651L4.7188 24.1403Z"
-                     fill="white" />
-               </g>
-               <defs>
-                  <clipPath id="clip0_2111_14928">
-                     <rect width="24" height="24" fill="white" transform="translate(0 0.245117)" />
-                  </clipPath>
-               </defs>
-            </svg>
-            <div>
-               <p class="text-xs">Download on the</p>
-               <p class="text-sm">Google play</p>
+            <div class="flex gap-2 p-3 rounded-lg bg-gray-800 text-gray-200 w-fit">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                  <g clip-path="url(#clip0_2111_14928)">
+                     <path
+                        d="M15.0652 11.7299L4.7188 1.35472L17.8828 8.91232L15.0652 11.7299ZM2.0176 0.745117C1.408 1.06432 1 1.64512 1 2.40112V23.0891C1 23.8451 1.408 24.4259 2.0176 24.7451L14.05 12.7427L2.0176 0.745117ZM21.9532 11.3219L19.192 9.72352L16.1116 12.7475L19.192 15.7715L22.0096 14.1731C22.8532 13.5023 22.8532 11.9927 21.9532 11.3219ZM4.7188 24.1403L17.8828 16.5827L15.0652 13.7651L4.7188 24.1403Z"
+                        fill="white" />
+                  </g>
+                  <defs>
+                     <clipPath id="clip0_2111_14928">
+                        <rect width="24" height="24" fill="white" transform="translate(0 0.245117)" />
+                     </clipPath>
+                  </defs>
+               </svg>
+               <div>
+                  <p class="text-xs">Download on the</p>
+                  <p class="text-sm">Google play</p>
+               </div>
             </div>
          </div>
       </div>

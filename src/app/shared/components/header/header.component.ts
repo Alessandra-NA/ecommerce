@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit{
    ngOnInit(): void {
       this.subscription = this.userService.wasAuthenticated.subscribe((auth: boolean) => {
          this.authenticated = auth;
-         console.log(this.authenticated)
       })
       this.checkSession()
       this.cartSubtotal = localStorage.getItem('cartSubtotal') ? Number(localStorage.getItem('cartSubtotal')) : 0
