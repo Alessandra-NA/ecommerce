@@ -18,6 +18,7 @@ const routes: Routes = [
    { path: 'shop', component: AllProductsComponent },
    { path: 'cart', component: OverviewComponent },
    { path: 'search/:searchString', component: SearchProductComponent },
+   { path: 'edit-product/:productId', component: CreateProductComponent },
    { path: '**', redirectTo: '' }
    
 ];

@@ -19,6 +19,7 @@ export class ProductQuickViewComponent implements OnInit {
       productQuantity: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(10)]),
    });
    logged = true
+   isAdmin = false;
    
    constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService, private userService: UserService, private cdr: ChangeDetectorRef) {
    }
@@ -31,6 +32,12 @@ export class ProductQuickViewComponent implements OnInit {
       }
       this.userService.authenticated.subscribe((auth: boolean) => {
          this.logged = auth
+      })
+      this.userService.checkAdmin().subscribe({
+         next: (res) => {
+            this.isAdmin = res.isAdmin;
+         },
+         error: () => { }
       })
    }
    getRange(n: number): number[] {

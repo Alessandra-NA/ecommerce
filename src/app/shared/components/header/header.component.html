@@ -143,7 +143,7 @@
             </li>
          </ul>
       </div>
-      <div class="flex">
+      <div class="flex"  *ngIf="!isAdmin">
          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
             <path
                d="M17.4355 4.375C18.9189 4.77396 20.2714 5.55567 21.3576 6.64184C22.4438 7.72801 23.2255 9.08051 23.6244 10.5639"
@@ -156,6 +156,19 @@
                stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
          </svg>
          <p class="font-medium">(219) 555-0114</p>
+      </div>
+
+      <div *ngIf="isAdmin">
+         <button type="button"
+            class="border border-light-green px-3 py-1 rounded-full my-2 text-light-green font-semibold flex gap-2"
+            [routerLink]="['/new-product']">
+            Create a product
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+               class="w-6 h-6">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+
+         </button>
       </div>
    </div>
 </nav>

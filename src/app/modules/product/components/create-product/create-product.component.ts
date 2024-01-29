@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { UserService } from '../../../user/services/user.service';
 import { Router } from '@angular/router';
+import { Product } from '../../interfaces/product';
 
 
 @Component({
@@ -16,6 +17,51 @@ export class CreateProductComponent implements OnInit {
    tags: string[] = []
    chosenCategory = 'Choose Category';
    isAdmin: boolean = false;
+   product: Product | undefined;
+
+   ngOnInit(): void {
+      this.userService.checkAdmin().subscribe({
+         next: (res) => {
+            this.isAdmin = res.isAdmin;
+         },
+         error: (error) => {
+            this.router.navigate(['/']);
+         }
+      })
+      if(this.router.url.includes('edit-product')) {
+         if(window.history.state.product) {
+            this.product = window.history.state.product;
+            this.productForm.get('productName')?.setValue(this.product!.name)
+            this.productForm.get('productDescription')?.setValue(this.product!.description)
+            this.productForm.get('productPrice')?.setValue(this.product!.price)
+            this.productForm.get('discountPrice')?.setValue(this.product!.discountPrice === 0 ? '' : this.product!.discountPrice.toString())
+            this.productForm.get('productStock')?.setValue(this.product!.numberInStock)
+            this.productForm.get('productStatus')?.setValue(this.product!.active.toString())
+            this.productForm.get('productSKU')?.setValue(this.product!.SKU)
+            this.productForm.get('productBrand')?.setValue(this.product!.brand)
+            this.urlImages = this.product!.images
+            this.tags = this.product!.tags
+            this.chosenCategory = this.product!.category
+         }
+         else {
+            this.productService.getProduct(+this.router.url.split('/edit-product/')[1]).subscribe(data => {
+               this.product = data
+               this.productForm.get('productName')?.setValue(this.product.name)
+               this.productForm.get('productDescription')?.setValue(this.product.description)
+               this.productForm.get('productPrice')?.setValue(this.product.price)
+               this.productForm.get('discountPrice')?.setValue(this.product!.discountPrice === 0 ? '' : this.product!.discountPrice.toString())
+               this.productForm.get('productStock')?.setValue(this.product.numberInStock)
+               this.productForm.get('productStatus')?.setValue(this.product.active.toString())
+               this.productForm.get('productSKU')?.setValue(this.product.SKU)
+               this.productForm.get('productBrand')?.setValue(this.product.brand)
+               this.urlImages = this.product.images
+               this.tags = this.product.tags
+               this.chosenCategory = this.product.category
+            })
+         }
+      }
+   }
+
 
    
 
@@ -23,7 +69,7 @@ export class CreateProductComponent implements OnInit {
       productName: new FormControl('', Validators.required),
       productBrand: new FormControl(''),
       productDescription: new FormControl(''),
-      productPrice: new FormControl('', Validators.required),
+      productPrice: new FormControl(0, Validators.required),
       discountPrice: new FormControl(''),
       productImageUrls: new FormControl(''),
       productStock: new FormControl(99, Validators.required),
@@ -57,7 +103,6 @@ export class CreateProductComponent implements OnInit {
    }
 
    removeTag(tag: string) {
-      console.log('remove tag')
       const index = this.tags.indexOf(tag);
       if (index > -1) {
          this.tags.splice(index, 1);
@@ -83,26 +128,37 @@ export class CreateProductComponent implements OnInit {
       const description = (this.productForm.get('productDescription')?.value !== '' ? this.productForm.get('productDescription')?.value : 'No description provided.')!
       const SKU = this.productForm.get('productSKU')?.value!
 
-      this.productService.createProduct(name, price, discountPrice, category, images, numberInStock, active, rating, tags, brand, description, SKU).subscribe(
-      (res) => {
-         this.router.navigate(['product-details', 1], {state: {product: res}});
-      },
-      (error) => {
-         this.loading = false;
-         console.log(error)
-      })
+      if (!this.product) {
+         this.productService.createProduct(name, price, discountPrice, category, images, numberInStock, active, rating, tags, brand, description, SKU).subscribe(
+            (res) => {
+               this.router.navigate(['product-details', res.id], { state: { product: res } });
+            },
+            (error) => {
+               this.loading = false;
+               console.log(error)
+            })
+      } else if (this.product) {
+         this.productService.updateProduct(this.product.id, name, price, discountPrice, category, images, numberInStock, active, rating, tags, brand, description, SKU).subscribe(
+            (res) => {
+               this.router.navigate(['product-details', res.id], { state: { product: res } });
+            },
+            (error) => {
+               this.loading = false;
+               console.log(error)
+            })
+      }
    }
 
-   ngOnInit(): void {
-      this.userService.checkAdmin().subscribe({
-         next: (res) => {
-            this.isAdmin = res.isAdmin;
-         },
-         error: (error) => {
-            this.router.navigate(['/']);
-         }
+   deleteProduct(id: number) {
+      this.loading = true
+      this.productService.deleteProduct(id).subscribe(data => {
+         this.loading = false
+         alert('Product deleted successfully')
+         this.router.navigate(['/']);
       })
+      
    }
+
    handlePlus() {
       const quantity: number = +this.productForm.get('productStock')!.value!;
       if (quantity < 999) {

@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit{
    cartSubtotal: number = 0;
    cartProductQuantity: number = 0;
    searchString: string = ''
+   isAdmin = false;
    
    constructor(private userService: UserService, private cartService: CartService, private router: Router) {
    }
@@ -31,6 +32,12 @@ export class HeaderComponent implements OnInit{
       })
       this.cartService.productsInCart.subscribe((products: number) => {
          this.cartProductQuantity = products
+      })
+      this.userService.checkAdmin().subscribe({
+         next: (isAdmin: boolean) => {
+            this.isAdmin = isAdmin
+         },
+         error: () => {}
       })
    }
 

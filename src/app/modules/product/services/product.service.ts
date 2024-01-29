@@ -17,6 +17,22 @@ export class ProductService {
       return this.http.post<Product>(url, data, { withCredentials: true });
    }
 
+   updateProduct(id: number, name: string, price: number, discountPrice: number, category: string, images: string[], numberInStock: number, active: boolean, rating: number, tags: string[], brand: string, description: string, SKU: string) {
+      const url = this.apiUrl + '/update';
+      const data = {
+         id, name, price, discountPrice, category, images, numberInStock, active, rating, tags, brand, description, SKU
+      }
+      return this.http.post<Product>(url, data, { withCredentials: true });
+   }
+
+   deleteProduct(id: number) {
+      const url = this.apiUrl + '/delete';
+      const data = {
+         id
+      }
+      return this.http.post<Product>(url, data, { withCredentials: true });
+   }
+
    getAllProducts() {
       const url = this.apiUrl;
       return this.http.get<Product[]>(url);
