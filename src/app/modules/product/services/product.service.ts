@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from '../interfaces/product';
 
 @Injectable({
-  providedIn: 'root'
+   providedIn: 'root'
 })
 export class ProductService {
    private apiUrl = 'http://localhost:3000/product';

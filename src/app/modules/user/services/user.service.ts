@@ -4,7 +4,7 @@ import { User } from '../interfaces/user';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+   providedIn: 'root'
 })
 export class UserService {
    private apiUrl = 'http://localhost:3000/user';
@@ -14,11 +14,11 @@ export class UserService {
 
    signUp(email: string, password: string) {
       const url = this.apiUrl + '/create';
-      return this.http.post<User>(url, {email, password, role: 'user'});
+      return this.http.post<User>(url, { email, password, role: 'user' });
    }
    logIn(email: string, password: string) {
       const url = this.apiUrl + '/login';
-      return this.http.post<User>(url, {email, password}, {withCredentials: true});
+      return this.http.post<User>(url, { email, password }, { withCredentials: true });
    }
    logOut() {
       const url = this.apiUrl + '/logout';

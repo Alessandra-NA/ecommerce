@@ -5,15 +5,15 @@ import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+   providedIn: 'root'
 })
-   
+
 export class CartService {
    private apiUrl = 'http://localhost:3000/cart';
    constructor(private http: HttpClient) { }
    total = new BehaviorSubject<number>(localStorage.getItem('cartSubtotal') ? Number(localStorage.getItem('cartSubtotal')) : 0);
    productsInCart = new BehaviorSubject<number>(localStorage.getItem('cartQuantity') ? Number(localStorage.getItem('cartQuantity')) : 0);
-   
+
    addProduct(productId: number, quantity: number) {
       const url = this.apiUrl + '/addProduct';
       const body = { productId, quantity }
@@ -45,7 +45,7 @@ export class CartService {
 
    updateCartQuantity(cart: Cart) {
       const url = this.apiUrl + '/updateQuantity';
-      return this.http.post<Cart>(url, {cart: cart}, { withCredentials: true }).pipe(
+      return this.http.post<Cart>(url, { cart: cart }, { withCredentials: true }).pipe(
          map((resp) => {
             this.updateCartSubtotal(resp)
             this.updateCartNumberOfProducts(resp)

@@ -25,7 +25,9 @@ export class LoginComponent {
             const us: User = user
             localStorage.setItem('logged', 'true');
             this.userService.changeAuthenticated(true); 
-            this.router.navigate(['/']);
+            this.router.navigate(['/']).then(() => {
+               window.location.reload();
+            });
          },
          error: (err) => {
             console.log(err)

@@ -25,7 +25,9 @@ export class SignupComponent {
             next: (user) => {
                localStorage.setItem('userData', user.toString());
                this.userService.changeAuthenticated(true);
-               this.router.navigate(['/']);
+               this.router.navigate(['/']).then(() => {
+                  window.location.reload();
+               });
             },
             error: (err) => {
                console.log(err)
